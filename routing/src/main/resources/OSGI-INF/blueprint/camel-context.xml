@@ -14,7 +14,7 @@
 
 		<route id="putMsgToMQQueue">
 			<from uri="jetty:http://0.0.0.0:4000/order" />
-			<log message="PUT MSG on Q3 #---###########################${body}" />
+			<log message="PUT MSG on Q3 #----##########################${body}" />
 			<to uri="wsjms:Q3" />
 		</route>
 
