@@ -10,16 +10,15 @@
 
 	<bean id="dummyReplyToServer" class="org.apache.camel.demo.DummyReplyToServer" />
 
-	<camelContext xmlns="http://camel.apache.org/schema/blueprint">
+	<camelContext xmlns="http://camel.apache.org/schema/blueprint" streamCache="true">
 
 
 		<route id="putMsgToMQQueue">
 			<from uri="jetty:http://0.0.0.0:4000/order" />
-			<!-- 
 			<log message="PUT MSG on Q3 ################################${body}" />
-			 -->
 			<to uri="wsjms:Q3" />
 		</route>
+
 
 		<route id="readMsgFromMQQueue">
 			<from uri="wsjms:Q3?jmsMessageType=Text" />
@@ -59,7 +58,7 @@
 		<property name="transportType" value="1" />
 		<property name="hostName" value="*.*.*.*" />
 		<property name="port" value="1414" />
-		<property name="queueManager" value="***.QUEUE.MANAGER" />
+		<property name="queueManager" value="QUEUE.MANAGER" />
 		<property name="channel" value="SYSTEM.DEF.SVRCONN" />
 		<property name="useConnectionPooling" value="true" />
 	</bean>
