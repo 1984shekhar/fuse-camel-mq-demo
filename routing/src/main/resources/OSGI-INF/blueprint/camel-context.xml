@@ -18,7 +18,6 @@
 			<to uri="wsjms:Q3" />
 		</route>
 
-
 		<route id="readMsgFromMQQueue">
 			<from uri="wsjms:Q3?jmsMessageType=Text" />
 			<log message="GOT MESSAGE from wsjms:Q3 ################################${body}" />
