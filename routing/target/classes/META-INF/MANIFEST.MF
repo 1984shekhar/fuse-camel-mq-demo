@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1407906001908
+Build-Jdk: 1.7.0_51
+Built-By: hpejcino
+Bundle-Description: Shows how to connect JBoss Fuse using Camel and MQ S
+ eries
+Bundle-ManifestVersion: 2
+Bundle-Name: Camel :: MQ-Demo :: Routing
+Bundle-SymbolicName: org.apache.camel.demo.camel-wmq.routing
+Bundle-Version: 1.0.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.camel.demo;uses:="org.apache.camel";version="
+ 1.0.0"
+Import-Package: com.ibm.mq.jms,org.apache.camel;version="[2.10,3)",org.a
+ pache.camel.component.jms,org.osgi.service.blueprint;version="[1.0.0,2.
+ 0.0)",org.springframework.jms.connection
+Tool: Bnd-1.50.0

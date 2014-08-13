@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 
+	     http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+         http://camel.apache.org/schema/blueprint 
+	     http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+
+	<bean id="dummyReplyToServer" class="org.apache.camel.demo.DummyReplyToServer" />
+
+	<camelContext xmlns="http://camel.apache.org/schema/blueprint">
+
+
+		<route id="putMsgToMQQueue">
+			<from uri="jetty:http://0.0.0.0:4000/order" />
+			<!-- 
+			<log message="PUT MSG on Q3 ################################${body}" />
+			 -->
+			<to uri="wsjms:Q3" />
+		</route>
+
+		<route id="readMsgFromMQQueue">
+			<from uri="wsjms:Q3?jmsMessageType=Text" />
+			<log message="GOT MESSAGE from wsjms:Q3 ################################${body}" />
+		</route>
+	
+
+		<route id="replyToExample">
+			<from uri="jetty:http://0.0.0.0:3000/order" />
+			<to	uri="wsjms:Q1?replyTo=Q2&amp;useMessageIDAsCorrelationID=true&amp;jmsMessageType=Text" />
+		</route>
+
+		<route id="dummyReplyToServer">
+			<from uri="wsjms:Q1?useMessageIDAsCorrelationID=true" />
+			<log message="GOT MESSAGE from wsjms:Q1 ################################${body}" />
+			<process ref="dummyReplyToServer" />
+			<to uri="log:com.fusesource.camel?showAll=true" />
+			<log message="Done with dummyReplyToServer ################################ ${body}" />
+		</route>
+	</camelContext>
+
+	<bean id="wsjms" class="org.apache.camel.component.jms.JmsComponent">
+		<property name="deliveryPersistent" value="false" />
+		<property name="connectionFactory" ref="secureConnectionFactory">
+		</property>
+	</bean>
+
+
+	<bean id="secureConnectionFactory"
+		class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter">
+		<property name="targetConnectionFactory" ref="mqConnectionFactory" />
+		<property name="username" value="mqm"></property>
+		<property name="password" value="mqm"></property>
+	</bean>
+
+	<bean id="mqConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="transportType" value="1" />
+		<property name="hostName" value="*.*.*.*" />
+		<property name="port" value="1414" />
+		<property name="queueManager" value="***.QUEUE.MANAGER" />
+		<property name="channel" value="SYSTEM.DEF.SVRCONN" />
+		<property name="useConnectionPooling" value="true" />
+	</bean>
+
+</blueprint>
+	         	
