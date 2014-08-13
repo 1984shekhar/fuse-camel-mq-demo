@@ -12,7 +12,6 @@
 
 	<camelContext xmlns="http://camel.apache.org/schema/blueprint" streamCache="true">
 
-
 		<route id="putMsgToMQQueue">
 			<from uri="jetty:http://0.0.0.0:4000/order" />
 			<log message="PUT MSG on Q3 ################################${body}" />
