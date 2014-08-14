@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1407906001908
+Bnd-LastModified: 1407909095210
 Build-Jdk: 1.7.0_51
 Built-By: hpejcino
 Bundle-Description: Shows how to connect JBoss Fuse using Camel and MQ S
