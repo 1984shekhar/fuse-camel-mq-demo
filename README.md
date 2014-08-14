@@ -114,6 +114,14 @@ JBossFuse:karaf@root> list
 ```
  
 
+###Change camel-context.xml, to reflect your own config
+<property name="hostName" value="127.0.0.1" />
+<property name="queueManager" value="QUEUE.MANAGER" />
+<property name="username" value="mqm"></property>
+<property name="password" value="mqm"></property>
+
+
+
 ##Deploy camel routes onto Fuse   
 mvn clean install
 
@@ -124,7 +132,7 @@ JBossFuse:karaf@root> features:install camel-wmq-demo
 ```
 ##Invoke route 
 by putting sample xml payload to jetty endpoint http://localhost:3000/order and http://localhost:4000/order
-with something like SOAP UI or Firefox plugin HttpRequester
+with something like Firefox plugin HttpRequester
 ```
 <?xml version="1.0" encoding="UTF-8"><Customer><id>123</id><name>A</name></Customer>
 ```
