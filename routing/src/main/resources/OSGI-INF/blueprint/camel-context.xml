@@ -14,7 +14,7 @@
 
 		<route id="putMsgToMQQueue">
 			<from uri="jetty:http://0.0.0.0:4000/order" />
-			<log message="PUT MSG on Q3 #############################${body}" />
+			<log message="PUT MSG on Q3 ###########################${body}" />
 			<to uri="wsjms:Q3" />
 		</route>
 
@@ -54,9 +54,9 @@
 
 	<bean id="mqConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
 		<property name="transportType" value="1" />
-		<property name="hostName" value="*.*.*.*" />
+		<property name="hostName" value="10.10.178.20" />
 		<property name="port" value="1414" />
-		<property name="queueManager" value="QUEUE.MANAGER" />
+		<property name="queueManager" value="REDHAT.QUEUE.MANAGER" />
 		<property name="channel" value="SYSTEM.DEF.SVRCONN" />
 		<property name="useConnectionPooling" value="true" />
 	</bean>
