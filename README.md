@@ -22,10 +22,12 @@ One thing that you will find handy is using IBM Websphere MQ Explorer, from here
 
 ## Set up
 In order to get this example working you need two things
+
 a)install OSIG libraries
+
 b)deploy camel routes onto Fuse
 
-#Installing OSGI libraries
+##Installing OSGI libraries
 It is assumed that you have an instance of MQ Series available which is 7.x version. This was written for version of 7.1 MQ Series.
 First thing you need to do is make MQ Series OSGI libraries available to Fuse.
 
@@ -112,7 +114,8 @@ In Fuse shell run
 JBossFuse:karaf@root> features:addurl mvn:org.apache.camel.demo.camel-wmq/features/1.0.0/xml/features
 JBossFuse:karaf@root> features:install camel-wmq-demo
 
-##Invoke route by putting sample xml payload to jetty endpoint http://localhost:3000/order and http://localhost:4000/order
+##Invoke route 
+by putting sample xml payload to jetty endpoint http://localhost:3000/order and http://localhost:4000/order
 with something like SOAP UI or Firefox plugin HttpRequester
 <?xml version="1.0" encoding="UTF-8"><Customer><id>123</id><name>A</name></Customer>
 
