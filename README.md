@@ -128,3 +128,5 @@ by putting sample xml payload to jetty endpoint http://localhost:3000/order and 
 with something like SOAP UI or Firefox plugin HttpRequester
 
 <?xml version="1.0" encoding="UTF-8"><Customer><id>123</id><name>A</name></Customer>
+
+--END
