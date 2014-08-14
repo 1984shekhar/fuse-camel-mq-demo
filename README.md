@@ -115,11 +115,13 @@ JBossFuse:karaf@root> list
  
 
 ###Change camel-context.xml, to reflect your own config
+
+```
 <property name="hostName" value="127.0.0.1" />
 <property name="queueManager" value="QUEUE.MANAGER" />
 <property name="username" value="mqm"></property>
 <property name="password" value="mqm"></property>
-
+```
 
 
 ##Deploy camel routes onto Fuse   
