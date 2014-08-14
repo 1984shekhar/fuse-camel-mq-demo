@@ -56,10 +56,8 @@ com.ibm.msg.client.osgi.nls_7.1.0.3.jar
 
 com.ibm.mq.osgi.directip_7.1.0.3.jar
 
-  
 
 You have a two ways of doing that
- 
 
 a)Manually adding these dependencies into Fuse via osgi:install command i.e
 
@@ -96,27 +94,40 @@ JBossFuse:karaf@root> list
 
  
 [ 269] [Active	] [      	] [ 	] [   60] WebSphere MQ classes for Java Plug-in (7.1.0.3)
+
 [ 270] [Active	] [      	] [ 	] [   60] JMS client Plug-in (7.1.0.3)
+
 [ 271] [Active	] [      	] [ 	] [   60] JMS prereq Plug-in (7.1.0.3)
+
 [ 272] [Active	] [      	] [ 	] [   60] WMQ provider Plug-in (7.1.0.3), Fragments: 276
+
 [ 273] [Active	] [      	] [ 	] [   60] WMQ prereq Plug-in (7.1.0.3)
+
 [ 274] [Resolved   ] [      	] [ 	] [   60] WMQ NLS Plug-in (7.1.0.3), Hosts: 277
+
 [ 275] [Active	] [      	] [ 	] [   60] Common Services J2SE Plug-in (7.1.0.3)
+
 [ 276] [Resolved   ] [      	] [ 	] [   60] WMQ Transactional Client Plug-in (7.1.0.3), Hosts: 272
+
 [ 277] [Active	] [      	] [ 	] [   60] NLS Plug-in (7.1.0.3), Fragments: 274
+
 [ 278] [Active	] [      	] [ 	] [   60] DirectIP Plug-in (7.1.0.3)
 
  
 
 ##Deploy camel routes onto Fuse
 mvn clean install
+
 In Fuse shell run
+
 JBossFuse:karaf@root> features:addurl mvn:org.apache.camel.demo.camel-wmq/features/1.0.0/xml/features
+
 JBossFuse:karaf@root> features:install camel-wmq-demo
 
 ##Invoke route 
 by putting sample xml payload to jetty endpoint http://localhost:3000/order and http://localhost:4000/order
 with something like SOAP UI or Firefox plugin HttpRequester
+
 <?xml version="1.0" encoding="UTF-8"><Customer><id>123</id><name>A</name></Customer>
 
 
