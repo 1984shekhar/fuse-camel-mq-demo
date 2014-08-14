@@ -14,7 +14,6 @@ a)download the evaluation version of MQ Series and run it locally. Evaluation ve
 
 b)use an existing instance This is the preferred set up, since most of the heavy lifting is already done for you.
 
-
 One thing that you will find handy is using IBM Websphere MQ Explorer, from here you can do most of admin tasks on MQ Series if you need to.
 
 
