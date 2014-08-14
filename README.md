@@ -115,7 +115,7 @@ JBossFuse:karaf@root> list
 
  
 
-##Deploy camel routes onto Fuse
+##Deploy camel routes onto Fuse 
 mvn clean install
 
 In Fuse shell run
